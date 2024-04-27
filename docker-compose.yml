@@ -13,7 +13,6 @@ services:
 
   web:
     image: jeanvega/infracciones:latest
-    command: gunicorn trafficviolation.trafficviolation.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/app
     ports:
