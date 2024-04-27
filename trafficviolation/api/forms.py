@@ -8,6 +8,10 @@ class InfraccionForm(forms.Form):
     token = forms.CharField(max_length=50)
 
 
+class GenerarInformeForm(forms.Form):
+    email = forms.EmailField()
+
+
 class OficialForm(forms.Form):
     nombre = forms.CharField(max_length=100)
     numero_unico = forms.CharField(max_length=50)
