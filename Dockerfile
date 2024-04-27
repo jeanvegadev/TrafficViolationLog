@@ -7,11 +7,7 @@ ENV PYTHONUNBUFFERED 1
 # Set working directory
 WORKDIR /app
 
-# Install virtualenv
-RUN pip install virtualenv
-
 # Create and activate the virtual environment
-RUN virtualenv venv
 ENV VIRTUAL_ENV=/app/venv
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
