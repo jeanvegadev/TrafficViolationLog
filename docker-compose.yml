@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db:
-    image: mysql:5.7
+    image: mysql
     environment:
       MYSQL_DATABASE: 'traffic'
       MYSQL_USER: 'admin'
@@ -12,7 +12,7 @@ services:
       - mysql_data:/var/lib/mysql
 
   web:
-    build: .
+    image: jeanvega/infracciones:latest
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app
