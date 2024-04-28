@@ -7,15 +7,14 @@ ENV PYTHONUNBUFFERED 1
 # Set working directory
 WORKDIR /app
 
-RUN python -m venv venv
-
 # Create and activate the virtual environment
+RUN python -m venv venv
 ENV VIRTUAL_ENV=/app/venv
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Install dependencies
 COPY requirements.txt /app/
-RUN pip install -r requirements.txt
+RUN /app/venv/bin/pip install --no-cache-dir -r requirements.txt
 
 # Copy the entrypoint script into the container
 COPY entrypoint.sh /app/
