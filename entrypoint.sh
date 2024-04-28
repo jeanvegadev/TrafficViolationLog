@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Wait for MySQL container to be ready
+echo "Waiting for MySQL container to be ready..."
+while ! nc -z db 3306; do
+    sleep 1
+done
+
 # Apply database migrations
 python trafficviolation/manage.py migrate
 
