@@ -10,6 +10,11 @@ services:
       MYSQL_ROOT_PASSWORD: 'root'
     volumes:
       - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "admin", "-padmin"]
+      interval: 5s
+      retries: 3
+      start_period: 10s
 
   web:
     image: jeanvega/infracciones:latest
@@ -18,7 +23,8 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - db
+      db:
+        condition: service_healthy  # Wait for the MySQL service
     environment:
       - DJANGO_DB_HOST=db
       - DJANGO_DB_PORT=3306
