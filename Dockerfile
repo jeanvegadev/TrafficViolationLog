@@ -29,4 +29,4 @@ COPY . /app/
 ENTRYPOINT ["/app/entrypoint.sh"]
 
 # Set the command to run your application
-CMD ["gunicorn", "trafficviolation.trafficviolation.wsgi:application", "--bind", "0.0.0.0:8000"]
+# CMD ["gunicorn", "trafficviolation.trafficviolation.wsgi:application", "--bind", "0.0.0.0:8000"]
