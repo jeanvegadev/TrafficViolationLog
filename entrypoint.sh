@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Wait for 10 seconds after MySQL container is launched
+# Wait for 4 seconds after MySQL container is launched
 echo "Waiting for MySQL container to be ready..."
-sleep 10
+sleep 4
 
 # Apply database migrations
 python trafficviolation/manage.py migrate
