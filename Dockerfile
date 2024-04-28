@@ -1,4 +1,4 @@
-FROM python:3.9.19-alpine3.19
+FROM python:3.9
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -8,13 +8,13 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
 # Create and activate the virtual environment
-RUN python -m venv venv
-ENV VIRTUAL_ENV=/app/venv
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+# RUN python -m venv venv
+# ENV VIRTUAL_ENV=/app/venv
+# ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Install dependencies
 COPY requirements.txt /app/
-RUN /app/venv/bin/pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the entrypoint script into the container
 COPY entrypoint.sh /app/
