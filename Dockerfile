@@ -1,27 +1,21 @@
-# First stage: Create a virtual environment
-FROM python:3.9 AS builder
+FROM python:3.9
 
 # Set environment variables
-ENV VIRTUAL_ENV=/opt/venv
-RUN python3 -m venv $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
-
-# Second stage: Copy application code and dependencies
-FROM python:3.9-slim
-
-# Set environment variables
-ENV VIRTUAL_ENV=/opt/venv
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
 # Set working directory
 WORKDIR /app
 
-# Copy the virtual environment from the previous stage
-COPY --from=builder $VIRTUAL_ENV $VIRTUAL_ENV
+RUN python -m venv venv
+
+# Create and activate the virtual environment
+ENV VIRTUAL_ENV=/app/venv
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Install dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements.txt /app/
+RUN pip install -r requirements.txt
 
 # Copy the entrypoint script into the container
 COPY entrypoint.sh /app/
