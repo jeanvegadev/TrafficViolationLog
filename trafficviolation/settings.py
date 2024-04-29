@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'trafficviolation.api.apps.ApiConfig'
+    'api.apps.ApiConfig'
 ]
 
 MIDDLEWARE = [
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'trafficviolation.trafficviolation.urls'
+ROOT_URLCONF = 'trafficviolation.urls'
 
 TEMPLATES = [
     {
