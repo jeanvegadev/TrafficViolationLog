@@ -4,6 +4,9 @@
 echo "Waiting for MySQL container to be ready..."
 sleep 4
 
+echo "collect statics"
+python manage.py collectstatics --no-input
+
 # Apply database migrations
 python manage.py migrate
 
