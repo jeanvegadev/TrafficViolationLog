@@ -98,7 +98,7 @@ class BearerTokenView(View):
         try:
             oficial_user = Oficial.objects.filter(
                 numero_identificatorio=numero_unico).get(nombre=nombre_oficial)
-        except Vehiculo.DoesNotExist:
+        except Oficial.DoesNotExist:
             return JsonResponse({'error': 'El oficial no existe'},
                                 status=404)
         token = generate_access_token(oficial_user)
