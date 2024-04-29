@@ -2,7 +2,7 @@
 
 # Wait for 4 seconds after MySQL container is launched
 echo "Waiting for MySQL container to be ready..."
-sleep 4
+python manage.py wait_for_db
 
 echo "collect statics"
 python manage.py collectstatic --no-input
