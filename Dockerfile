@@ -8,9 +8,9 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
 # Create and activate the virtual environment
-# RUN python -m venv venv
-# ENV VIRTUAL_ENV=/app/venv
-# ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+RUN python -m venv venv
+ENV VIRTUAL_ENV=/app/venv
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Install dependencies
 COPY requirements.txt /app/
@@ -27,6 +27,3 @@ COPY . /app/
 
 # Set the entrypoint
 ENTRYPOINT ["/app/entrypoint.sh"]
-
-# Set the command to run your application
-# CMD ["gunicorn", "trafficviolation.trafficviolation.wsgi:application", "--bind", "0.0.0.0:8000"]
